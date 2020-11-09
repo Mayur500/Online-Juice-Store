@@ -35,3 +35,28 @@ nav li:nth-child(5) a {
     color: white;
   }
 }
+.main-button,.button-cart{
+  background: $primary;
+
+  &:hover{
+    background: $primary-hover;
+  }
+}
+.cart{
+  background: $secondary;
+  .amount{
+    color:$primary;
+  }
+}
+.login{
+  background: $secondary;
+  height: 83vh;
+
+  a{
+    color:$primary;
+
+    &:hover{
+     color:$primary-hover; 
+    }
+  }
+}
