@@ -1,6 +1,7 @@
 <div class="cart " style="height:1000px;">
 
-<!-- <div class="blank pt-10" >
+<%if(session.cart===undefined){%>
+ <div class="blank pt-10" >
  
     <div class="container mx-auto text-center">
        
@@ -12,51 +13,30 @@
          </button> 
 
     </div>
-</div> -->
-
+</div>
+<%}else{%>
 <div class="exist container mx-auto w-1/2">
     <div class="flex justify-center items-center border-b border-gray-300 pb-4"> 
      <img src="/img/exist-cart.jpg" class="w-32" alt=" "> 
      <h1 class=" text-2xl font-bold">Order Status</h1>
     </div>
-    <div class="juices flex items-center mb-8">
- <img src="/img/juices.jpg" class="w-64">  
- <div class="w-full flex items-center justify-between">
- <div class="ml-4">
-     <h1>Orange juices</h1>
-     <span>MEDIUM</span> 
- </div>
- <span >1 Glass </span>
- <span >$30</span>
-</div> 
-</div>
-<div class="juices flex items-center mb-8">
-    <img src="/img/juices.jpg" class="w-64">  
+    <%Object.values(session.cart.items).forEach((juice)=>{%>
+   <div class="juices flex items-center mb-8 ">
+    <img src="/img/juices.png" class="w-64">  
     <div class="w-full flex items-center justify-between">
     <div class="ml-4">
-        <h1>Orange juices</h1>
-        <span>MEDIUM</span> 
+        <h1 class="w-10"><%=juice.items.name%></h1>
+        <span><%=juice.items.size%></span> 
     </div>
-    <span >1 Glass </span>
-    <span >$30</span>
+    <span><%=juice.qty%> Glass</span>
+    <span>$<%=juice.items.price%></span>
    </div> 
    </div>
-   <div class="juices flex items-center mb-8">
-    <img src="/img/juices.jpg" class="w-64">  
-    <div class="w-full flex items-center justify-between">
-    <div class="ml-4">
-        <h1>Orange juices</h1>
-        <span>MEDIUM</span> 
-    </div>
-    <span >1 Glass </span>
-    <span >$30</span>
-   </div> 
-   </div>
-   <hr>
-<div class="text-right py-4">
+   <%})%>  
+<div class="text-right pt-4">
  <div>
   <span class="font-bold text-lg">Total Cost : </span>
-  <span class="amount font-bold ml-2">$90</span> 
+  <span class="amount font-bold ml-2">$ <%=session.cart.totalPrice%></span> 
  </div>
 
 </div>
@@ -75,3 +55,4 @@
 </div>
 
 </div>
+<%}%>

@@ -1,5 +1,7 @@
 @import "./variables";
-
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
+ 
 body {
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,6 +36,9 @@ nav li:nth-child(5) a {
     border-color: $pure;
     color: white;
   }
+  &:focus{
+    outline: none;
+  }
 }
 .main-button,.button-cart{
   background: $primary;
@@ -59,4 +64,8 @@ nav li:nth-child(5) a {
      color:$primary-hover; 
     }
   }
+}
+.noty_theme__mint{
+  border-radius:50px!important ;
+  text-align: center;
 }
