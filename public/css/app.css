@@ -308,7 +308,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-nav li:nth-child(5) a {
+nav li:last-child a {
   background: #FE5F1E;
 }
 
@@ -320,7 +320,7 @@ nav li a:hover {
   color: #FE5F1E;
 }
 
-nav li:nth-child(5) a:hover {
+nav li:last-child a:hover {
   background: #b23301;
 }
 

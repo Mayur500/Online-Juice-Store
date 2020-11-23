@@ -1,12 +1,12 @@
 @import "./variables";
 @import "~noty/src/noty.scss";
 @import "~noty/src/themes/mint.scss";
- 
+
 body {
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-nav li:nth-child(5) a {
+nav li:last-child a {
   background: $primary;
 }
 nav li a {
@@ -15,7 +15,7 @@ nav li a {
     color: $primary;
   }
 }
-nav li:nth-child(5) a {
+nav li:last-child a {
   &:hover {
     background: $primary-hover;
   }
@@ -36,36 +36,37 @@ nav li:nth-child(5) a {
     border-color: $pure;
     color: white;
   }
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
-.main-button,.button-cart{
+.main-button,
+.button-cart {
   background: $primary;
 
-  &:hover{
+  &:hover {
     background: $primary-hover;
   }
 }
-.cart{
+.cart {
   background: $secondary;
-  .amount{
-    color:$primary;
+  .amount {
+    color: $primary;
   }
 }
-.login{
+.login {
   background: $secondary;
   height: 83vh;
 
-  a{
-    color:$primary;
+  a {
+    color: $primary;
 
-    &:hover{
-     color:$primary-hover; 
+    &:hover {
+      color: $primary-hover;
     }
   }
 }
-.noty_theme__mint{
-  border-radius:50px!important ;
+.noty_theme__mint {
+  border-radius: 50px !important ;
   text-align: center;
 }

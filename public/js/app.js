@@ -6060,8 +6060,8 @@ function _updateCart() {
             console.log(res);
             cartquantity.innerHTML = res.data;
             new noty__WEBPACK_IMPORTED_MODULE_2___default.a({
-              type: 'success',
-              text: 'Item Added to Cart',
+              type: "success",
+              text: "Item Added to Cart",
               timeout: 300,
               progressBar: false
             }).show();
@@ -6084,7 +6084,7 @@ function _updateCart() {
 }
 
 cart.forEach(function (btnarea) {
-  btnarea.addEventListener('click', function (e) {
+  btnarea.addEventListener("click", function (e) {
     var juice = JSON.parse(btnarea.dataset.juices);
     updateCart(juice);
   });

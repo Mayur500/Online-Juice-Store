@@ -11,7 +11,7 @@ const session= require('express-session');
 const flash=require('express-flash');
 const MongoStore = require('connect-mongo')(session);
 const bodyParser= require('body-parser');
-
+const Passport= require('passport');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 //database connection
@@ -33,13 +33,21 @@ app.use(session({
     cookie: { maxAge:1000*60*60*24 }
 
 }));
+
 app.use(flash());
 
-app.use(function(req,res,next){
+
+
+const passportInit=require('./app/config/passport');
+passportInit(Passport);
+app.use(Passport.initialize());
+app.use(Passport.session());
+
+app.use(function(req,res,next){ 
     res.locals.session=req.session;
+    res.locals.user=req.user;
     next();
 });
-
 
 //ejs config
 app.use(express.static('public'));

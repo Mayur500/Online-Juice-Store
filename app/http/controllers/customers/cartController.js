@@ -13,7 +13,7 @@ function cartController() {
       }
       let cart = req.session.cart;
       let bodyid = req.body._id;
-     // console.log(bodyid);
+      // console.log(bodyid);
       if (!cart.items[bodyid]) {
         cart.items[bodyid] = {
           items: req.body,
@@ -28,7 +28,7 @@ function cartController() {
       }
       let totalQty = req.session.cart.totalQty;
       res.send(`${totalQty}`);
-     // console.log(req.session.cart.items);
+      // console.log(req.session.cart.items);
     },
   };
 }
