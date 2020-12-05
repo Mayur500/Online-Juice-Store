@@ -1,19 +1,16 @@
-<div class="login flex items-center justify-center py-10 ">
-  
-  <div class="w-full max-w-xs">
-    <%if(message){%>
- <h1 class="text-black-500 text-lg py-4 text-center"><%=message%></h1>
-    <%}%>
+<div class="w-full login flex items-center justify-center">
+   <div class="w-full max-w-xs">
+    <%  if(messages.error){%>
+      <span class="ml-20 mb-4 text-blue-500 text-sm">
+        <%=messages.error%>
+      </span>
+      <%}%>
     <form
       method="POST"
       action="/login"
       class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
     >
-    <%  if(messages.error){%>
-      <span class="text-blue-500 text-sm">
-        <%=messages.error%>
-      </span>
-      <%}%>
+  
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
           Email

@@ -1,0 +1,39 @@
+<div class="orders">
+<div class="container mx-auto px-12">
+<h1 class="font-bold text-lg my-6 text-center">Orders List</h1>
+<% if(messages.success){%>
+<div class="flex items-center bg-green-500 text-white text-sm
+font-bold px-4 py-3">
+<span class="text-lg mr-2">&#128523;</span>
+<h1>Order Placed Successfully</h1>
+<%}%>
+</div>
+<table class="w-full text-center">
+    <tr>
+     <th>Orders</th>
+     <th>Address</th>
+     <th>Time</th>
+    </tr>
+    <% if(orders.length>0){%>
+     <%orders.forEach((order)=>{%>
+    <tr>
+   <td  class="px-4 py-2 border">
+   <a class="link" href="#"><%=order._id%></a>
+   </td>
+   <td class="px-4 py-2 border"><%=order.address%></td>
+   <td  class="px-4 py-2 border">
+    <%=moment(order.createdAt).format('hh:mm A')%></td>
+  </tr>
+  <%})%>
+   <%}else{%>
+     <tr>
+    <td class="p-6">No Orders found</td>
+     </tr>
+       
+    <%} %>
+</table>
+
+</div>
+
+
+</div>

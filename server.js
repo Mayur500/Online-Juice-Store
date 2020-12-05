@@ -15,7 +15,7 @@ const Passport= require('passport');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 //database connection
-const url= "mongodb://localhost/JuiceStore";
+const url= "mongodb://localhost:27017/JuiceStore";
 mongoose.connect(url,{useNewUrlParser:true,useCreateIndex:true,useUnifiedTopology:true});
 mongoose.connection.on('connected', function(){  
     //console.log("Mongoose default connection is open to ", url);
@@ -46,6 +46,7 @@ app.use(Passport.session());
 app.use(function(req,res,next){ 
     res.locals.session=req.session;
     res.locals.user=req.user;
+    console.log(req.user);
     next();
 });
 

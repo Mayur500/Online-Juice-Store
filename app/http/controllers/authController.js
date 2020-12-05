@@ -5,20 +5,19 @@ const bcrypt = require("bcrypt");
 function authController() {
   return {
     login: (req, res) => {
-      res.render("auth/login",{message:req.flash('logout')});
+      res.render("auth/login");
     },
     postlogin: (req, res, next) => {
       const email = req.body.email;
       const password = req.body.password;
       if(!email || !password) {
         req.flash("error", "All Fields are required");
-         res.redirect('/login');
-        return res.redirect("/register");
+        return res.redirect("/login");
       }
       passport.authenticate("local", (error, user, msg) => {
         if (error) {
           req.flash("error", msg.message);
-          return res.redirect("/login");
+          return next(err);
         }
 
         if (!user) {
@@ -76,3 +75,4 @@ function authController() {
   };
 }
 module.exports = authController;
+

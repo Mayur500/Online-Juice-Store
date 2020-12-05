@@ -1,0 +1,51 @@
+<div class="orders">
+    <div class="container mx-auto pt-12">
+    <h1 class="font-bold text-lg my-6 text-center">All orders</h1>
+   
+    <table class="w-full bg-white">
+      <thead>
+       <tr>
+       <th class="text-center px-4 py-4 text-left">Orders</th>
+       <th class="text-center px-4 py-4 text-left">Customer</th>
+       <th class="text-center px-4 py-4 text-left">Address</th>
+       <th class="px-8 py-4 text-left">Status</th>
+       <th class="text-center px-4 py-4 text-left">Placed at</th>
+          </tr>
+      </thead>
+   <tbody class="ordersbody">
+    <% orders.forEach((orders)=>{  %>
+  <tr>
+
+   <td class="border px-4 py-2 text-green-900">
+      <p>order._id</p>
+      <div></div>
+   </td>
+   <td class="border px-4 py-2"></td>
+   <td class="border px-4 py-2">________</td>
+   <td class="border px-4 py-2">
+<div class="inline-block relative w-64">
+  <form action='/admin/order/status' method="POST">
+<select name="status" class="block w-full bg-white border
+border-gray-400 hover:border-gray-400 px-4 py-2 rounded 	transition-property: none;">
+<option value="placed">Placed</option>
+<option value="confirmed">Confirmed</option>
+<option value="prepared">Prepared</option>
+<option value="delivered">Delivered</option>
+
+</select>
+</form>
+
+   </div>
+
+   </td>
+   <td class="border px-4 py-4">
+      time
+   </td>
+
+  </tr>
+<%})%>
+
+   </tbody>
+</table>
+ </div>
+ </div>

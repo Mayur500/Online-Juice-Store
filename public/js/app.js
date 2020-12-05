@@ -6046,7 +6046,8 @@ function updateCart(_x) {
 
 function _updateCart() {
   _updateCart = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(juice) {
-    var res;
+    var _res;
+
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -6056,9 +6057,9 @@ function _updateCart() {
             return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/update-cart", juice);
 
           case 3:
-            res = _context.sent;
-            console.log(res);
-            cartquantity.innerHTML = res.data;
+            _res = _context.sent;
+            console.log(_res);
+            cartquantity.innerHTML = _res.data;
             new noty__WEBPACK_IMPORTED_MODULE_2___default.a({
               type: "success",
               text: "Item Added to Cart",
@@ -6071,7 +6072,9 @@ function _updateCart() {
           case 9:
             _context.prev = 9;
             _context.t0 = _context["catch"](0);
-            console.log(_context.t0);
+            res.json({
+              error: _context.t0
+            });
 
           case 12:
           case "end":
