@@ -1,6 +1,6 @@
 import axios from "axios";
 import Noty from "noty";
-
+import initAdmin from "./admin";
 let cart = document.querySelectorAll(".add-to-cart");
 let cartquantity = document.querySelector(".cartquantity");
 
@@ -16,7 +16,7 @@ async function updateCart(juice) {
       progressBar: false,
     }).show();
   } catch (e) {
-   res.json({error:e});
+    res.json({ error: e });
   }
 }
 
@@ -26,3 +26,4 @@ cart.forEach((btnarea) => {
     updateCart(juice);
   });
 });
+initAdmin();

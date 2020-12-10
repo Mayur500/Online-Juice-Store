@@ -70,3 +70,14 @@ nav li:last-child a {
   border-radius: 50px !important ;
   text-align: center;
 }
+
+.link {
+  color: $primary;
+
+  &:hover {
+    color: $primary-hover;
+  }
+}
+.orderslist {
+  background-color: $secondary;
+}

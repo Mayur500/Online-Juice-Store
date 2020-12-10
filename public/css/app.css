@@ -384,3 +384,15 @@ nav li:last-child a:hover {
   text-align: center;
 }
 
+.link {
+  color: #FE5F1E;
+}
+
+.link:hover {
+  color: #b23301;
+}
+
+.orderslist {
+  background-color: #F8F8F8;
+}
+

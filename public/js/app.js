@@ -6014,6 +6014,87 @@ try {
 
 /***/ }),
 
+/***/ "./resources/js/admin.js":
+/*!*******************************!*\
+  !*** ./resources/js/admin.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+function initAdmin() {
+  return _initAdmin.apply(this, arguments);
+}
+
+function _initAdmin() {
+  _initAdmin = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    var block, res, myorders, getting, userorder, htmldata, look;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            htmldata = function _htmldata(orders) {
+              userorder = orders.map(function (order) {
+                //   console.log(order);
+                return "\n   <tr>\n\n   <td class=\"border px-4 py-2 text-green-900\">\n      <p>".concat(order._id, "</p>\n     <div>").concat(getting(order.items), " </div>\n   </td>\n   <td class=\"border px-4 py-2\">").concat(order.details[0].name, "</td>\n   <td class=\"border px-4 py-2\">").concat(order.address, "</td>\n   <td class=\"border px-4 py-2\">\n<div class=\"inline-block relative w-64\">\n  <form action='/admin/order/status' method=\"POST\">\n\n<select  onchange=\"this.form.submit()\" name=\"status\" class=\"block w-full bg-white border\nborder-gray-400 hover:border-gray-400 px-4 py-2 rounded \ttransition-property: none\">\n<option value=\"placed\">Placed</option>\n<option value=\"confirmed\">Confirmed</option>\n<option value=\"prepared\">Prepared</option>\n<option value=\"delivered\">Delivered</option>\n\n</select>\n</form>\n\n   </div>\n\n   </td>\n   <td class=\"border px-4 py-4\">\n      time\n   </td>\n\n  </tr>\n");
+              });
+              var userstring = userorder.join('');
+              console.log(userorder);
+              return userstring;
+            };
+
+            getting = function _getting(items) {
+              console.log(items);
+              var objitems = Object.values(items.items); // console.log(objitems);
+
+              var myitems = objitems.map(function (given) {
+                //   console.log(given);
+                return "\n   <p>".concat(given.items.name, " - ").concat(given.qty, " pcs </p>\n   ");
+              });
+              var itemstring = myitems.join('');
+              return itemstring;
+            };
+
+            block = document.querySelector('#ordersbody');
+            _context.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/admin/orders');
+
+          case 5:
+            res = _context.sent;
+            //console.log(res.data);
+            myorders = res.data.orders;
+            userorder = [];
+            look = htmldata(myorders); //console.log(look)
+
+            block.innerHTML = look;
+
+          case 10:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _initAdmin.apply(this, arguments);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (initAdmin);
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -6029,11 +6110,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -6092,6 +6175,7 @@ cart.forEach(function (btnarea) {
     updateCart(juice);
   });
 });
+Object(_admin__WEBPACK_IMPORTED_MODULE_3__["default"])();
 
 /***/ }),
 

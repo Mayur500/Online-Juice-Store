@@ -1,34 +1,28 @@
 const { default: Axios } = require("axios");
-const order =require('../../../models/order');
-const user=require('../../../models/user');
-function orderController(){
+const orders = require("../../../models/order");
+const users = require("../../../models/user");
+function orderController() {
+  return {
+      
+    index: async (req, res) => {
+      const allorders = await orders.aggregate([
+          { $match: {status:{$ne:"completed"}}},
+          {
+            $lookup: {
+              from: "users",
+              localField: "userId",
+              foreignField: "_id",
+              as: "details",
+            },
+          }
+        ]).exec();
+  // console.log(allorders[0].details);
+       if(req.method=='POST'){
+        return res.json({ orders: allorders });
+       }
 
-return {
-
-   index:async (req,res)=>{
-  
-   const orders= await  order.aggregate([
-      {$match:{status:{$ne:'completed'}}},
-      {$lookup:
-       {
-      from:"user", localField:"user_Id", foreignField:"_id",
-       as:'user_details'
-    }},{$sort:{createdAt:-1}}
-]).exec();
-res.render('admin/orders',{orders:orders});
-   }
+      res.render("admin/orders", { orders: allorders });
+    },
+  };
 }
-
-}
-module.exports=orderController;
-
-
-
-
-
-
-
-
-
-
-
+module.exports = orderController;

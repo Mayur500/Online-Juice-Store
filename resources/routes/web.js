@@ -1,9 +1,12 @@
 const cartController = require("../../app/http/controllers/customers/cartController");
 const authController = require("../../app/http/controllers/authController");
+const orderController = require("../../app/http/controllers/orderController");
 const homeController = require("../../app/http/controllers/homeController");
 const checkinguser = require("../../app/http/middlewares/new");
-const admincontroller=require('../../app/http/controllers/admin/orderController');
+const admincontroller = require("../../app/http/controllers/admin/orderController");
 const adminauth = require("../../app/http/middlewares/admin");
+const { Cookie } = require("express-session");
+const bodyParser = require("body-parser");
 function routing(app) {
   app.get("/", homeController().index);
   app.get("/cart", cartController().index);
@@ -13,9 +16,11 @@ function routing(app) {
   app.post("/login", authController().postlogin);
   app.post("/logindata", authController().postlogin);
   app.post("/update-cart", cartController().update);
-  app.get('/logout',authController().logout);
-
-  app.get('/admin',adminauth,admincontroller().index);
-}
+  app.get("/logout", authController().logout);
+  app.post("/cart", orderController().location);
+  app.get("/customer/orders", orderController().index);
+  app.get("/admin/orders", adminauth, admincontroller().index);
+  app.post("/admin/orders", adminauth, admincontroller().index);
+};
 
 module.exports = routing;
