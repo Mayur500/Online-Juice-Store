@@ -20,9 +20,9 @@ function orderController() {
        if(req.method=='POST'){
         return res.json({ orders: allorders });
        }
-
-      res.render("admin/orders", { orders: allorders });
-    },
+       //console.log(allorders);
+ res.render("admin/orders", { orders: allorders });
+    }
   };
 }
 module.exports = orderController;

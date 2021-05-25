@@ -7,8 +7,10 @@ function init(passport) {
       { usernameField: "email" },
       async (email, password, done) => {
         const user = await User.findOne({ email: email });
+  
         if (!user) {
-          return done(null, false, { messsage: "No user Found" });
+        
+          return done(null, false, { message: "No user Found" });
         }
 
         const match = await bcrypt.compare(password, user.password);

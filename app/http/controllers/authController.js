@@ -17,10 +17,11 @@ function authController() {
       passport.authenticate("local", (error, user, msg) => {
         if (error) {
           req.flash("error", msg.message);
-          return next(err);
+          return next(error);
         }
 
         if (!user) {
+  
           req.flash("error", msg.message);
           return res.redirect("/login");
         }

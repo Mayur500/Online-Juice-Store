@@ -1,6 +1,7 @@
 import axios from 'axios';
-
-async function initAdmin(){
+import Noty from "noty";
+import moment from 'moment'
+async function initAdmin(socket){
 const block= document.querySelector('#ordersbody');
 
 const res=await axios.post('/admin/orders');
@@ -23,8 +24,7 @@ const res=await axios.post('/admin/orders');
    }
 let userorder=[];
 function htmldata(orders){
- 
-
+ console.log('champ');
   userorder= orders.map((order)=>{
     //   console.log(order);
  return `
@@ -38,14 +38,20 @@ function htmldata(orders){
    <td class="border px-4 py-2">${order.address}</td>
    <td class="border px-4 py-2">
 <div class="inline-block relative w-64">
-  <form action='/admin/order/status' method="POST">
-
+  <form action='/admin/orders/status' method="POST">
+  <input type="hidden" name="orderId" value="${ order._id }">
 <select  onchange="this.form.submit()" name="status" class="block w-full bg-white border
 border-gray-400 hover:border-gray-400 px-4 py-2 rounded 	transition-property: none">
-<option value="placed">Placed</option>
-<option value="confirmed">Confirmed</option>
-<option value="prepared">Prepared</option>
-<option value="delivered">Delivered</option>
+<option value="confirmed" ${ order.status === 'confirmed' ? 'selected' : '' }>
+Confirmed</option>
+<option value="prepared" ${ order.status === 'prepared' ? 'selected' : '' }>
+Prepared</option>
+<option value="delivered" ${ order.status === 'delivered' ? 'selected' : '' }>
+Delivered
+</option>
+<option value="completed" ${ order.status === 'completed' ? 'selected' : '' }>
+Completed
+</option>
 
 </select>
 </form>
@@ -54,20 +60,36 @@ border-gray-400 hover:border-gray-400 px-4 py-2 rounded 	transition-property: no
 
    </td>
    <td class="border px-4 py-4">
-      time
+   ${ moment(order.createdAt).format('hh:mm A') }
    </td>
 
   </tr>
 `
 });
 let userstring=userorder.join('');
-console.log(userorder);
+//console.log(userorder);
 return userstring;
 
 }
 let look=htmldata(myorders);
-//console.log(look)
+console.log('hellollo',myorders);
 block.innerHTML=look;
+
+
+
+socket.on('orderPlaced',(result)=>{
+ //  console.log('hello' ,result);
+   new Noty({
+      type:'success',
+      time:1000,
+      text:'New Order',
+      progressBar:false
+  
+    }).show();
+    myorders.unshift(result);
+    block.innerHTML="";
+  block.innerHTML= htmldata(myorders);
+})
 
 }
 
