@@ -11,12 +11,13 @@ const flash = require("express-flash");
 const MongoStore = require("connect-mongo")(session);
 const bodyParser = require("body-parser");
 const Passport = require("passport");
+const MONGO_URL = process.env.MONGO_URL;
 const Emitter =require('events');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //database connection
-const url = "mongodb://localhost:27017/JuiceStore";
+const url = MONGO_URL;
 mongoose.connect(url, {
   useNewUrlParser: true,
   useCreateIndex: true,

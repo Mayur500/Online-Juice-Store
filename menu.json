@@ -1,48 +1,48 @@
 [{
     "name": "Orange juice",
-    "image": " juices.png",
+    "image": "juices.png",
     "price": "25",
     "size": "small"
   },
   {
     "name": "Mixed Fruit",
-    "image": " juices.png",
+    "image": "juices.png",
     "price": "30",
     "size": "medium"
   },
   {
      "name": "Banana Milkshake",
-    "image": " juices.png",
+    "image": "juices.png",
     "price": "70",
     "size": "small"
   },
   {
     "name": "Oreo Milkshake",
-    "image": " juices.png",
+    "image": "juices.png",
     "price": "100",
     "size": "large"
   },
   {
     "name": "Pina Colada",
-    "image": " juices.png",
+    "image": "juices.png",
     "price": "90",
     "size": "medium"
   },
   {
     "name": "Neapolitan",
-    "image": " juices.png",
+    "image": "juices.png",
     "price": "100",
     "size": "small"
   },
   {
     "name": "Pomegranate Juice",
-    "image": " juices.png",
+    "image": "juices.png",
     "price": "60",
     "size": "large"
   },
   { 
     "name": "Apple Juice",
-    "image": " juices.png",
+    "image": "juices.png",
     "price": "50",
     "size": "medium"
   }]
